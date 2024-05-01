@@ -4,7 +4,8 @@ from .serializers import GameSerializer
 from rest_framework.response import Response
 from .utils import SetPagination
 from rest_framework.filters import OrderingFilter
-from django_filters.rest_framework import DjangoFilterBackend
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 class GameListAPIView(generics.ListAPIView):
     """
@@ -15,6 +16,11 @@ class GameListAPIView(generics.ListAPIView):
     pagination_class = SetPagination
     filter_backends = [OrderingFilter]
 
+    @method_decorator(cache_page(60*2))
+    def get(self, *args, **kwargs):
+        response = super().get(*args, **kwargs)
+        return response
+
 
 class GameCreateAPIView(generics.CreateAPIView):
     """
@@ -23,12 +29,17 @@ class GameCreateAPIView(generics.CreateAPIView):
     queryset  = Game.objects.all()
     serializer_class = GameSerializer
 
+
 class GameRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
     """
     API endpoint to get and update a single game.
     """
     queryset = Game.objects.all()
     serializer_class = GameSerializer
+
+    @method_decorator(cache_page(60*1))
+    def get(self, *args, **kwargs):
+        return super().get(*args, **kwargs)
 
         
 class GameDestroyAPIView(generics.DestroyAPIView):

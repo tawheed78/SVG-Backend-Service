@@ -6,10 +6,10 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = '__all__'
-        extra_kwargs = {
-            "name": {
-                "error_messages": {"blank": "Provide a name for the game"}
-            }
-        }
+        # extra_kwargs = {
+        #     "name": {
+        #         "error_messages": {"blank": "Provide a name for the game"}
+        #     }
+        # }
     
     
