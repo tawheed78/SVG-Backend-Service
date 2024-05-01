@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from dotenv import load_dotenv
 import os
 from pathlib import Path
-
+import dj_database_url
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -87,15 +87,23 @@ WSGI_APPLICATION = 'svg_backend.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('NAME'),  # Replace with your database name
+#         'USER': os.environ.get('USER'),  # Replace with your database username
+#         'PASSWORD': os.environ.get('PASSWORD'),  # Replace with your database password
+#         'HOST': os.environ.get('HOST'),  # Replace with your database host if not running locally
+#         'PORT': os.environ.get('PORT'),  # Replace with your database port if not the default
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('NAME'),  # Replace with your database name
-        'USER': os.environ.get('USER'),  # Replace with your database username
-        'PASSWORD': os.environ.get('PASSWORD'),  # Replace with your database password
-        'HOST': os.environ.get('HOST'),  # Replace with your database host if not running locally
-        'PORT': os.environ.get('PORT'),  # Replace with your database port if not the default
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgres://admin:61uM6l4rPvAXK5B4UXoBybUlxWy41oKL@dpg-cop933qcn0vc73doo5dg-a.oregon-postgres.render.com/svgdatabase',
+        conn_max_age=600
+    )
 }
 
 
