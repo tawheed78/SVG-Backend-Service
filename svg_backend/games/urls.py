@@ -15,5 +15,5 @@ urlpatterns = [
     #Endpoints to retrieve, update and delete a game
     path('games/<int:pk>', GameRetrieveUpdateAPIView.as_view()),
     path('games/<int:pk>', GameRetrieveUpdateAPIView.as_view()),
-    path('games/<int:pk>', GameDestroyAPIView.as_view()),
+    path('games/<int:pk>/', GameDestroyAPIView.as_view()),
 ]

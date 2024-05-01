@@ -49,7 +49,7 @@ class GameDestroyAPIView(generics.DestroyAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
-    def destroy(self, request, *args, **kwargs):
+    def delete(self, request, *args, **kwargs):
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response({"message": "Game deleted successfully."}, status=status.HTTP_200_OK)
