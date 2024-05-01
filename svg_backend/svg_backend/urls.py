@@ -19,7 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('v1/apis/', include('games.urls')),
+    path('v1/', include('games.urls')),
 ]
 
 # REST_FRAMEWORK = {(
