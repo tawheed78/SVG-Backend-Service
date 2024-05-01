@@ -19,5 +19,12 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('v1/apis', include('games.urls')),
+    path('v1/apis/', include('games.urls')),
 ]
+
+# REST_FRAMEWORK = {(
+#     'DEFAULT_FILTER_BACKENDS'
+#         'django_filters.rest_framework.DjangoFilterBackend', 
+#         'rest_framework.filters.SearchFilter', 
+#     ), 
+# }

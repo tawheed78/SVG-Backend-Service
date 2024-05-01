@@ -3,7 +3,8 @@ from .models import Game
 from .serializers import GameSerializer
 from rest_framework.response import Response
 from .utils import SetPagination
-from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.filters import OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
 
 class GameListAPIView(generics.ListAPIView):
     """
@@ -12,7 +13,8 @@ class GameListAPIView(generics.ListAPIView):
     queryset  = Game.objects.all()
     serializer_class = GameSerializer
     pagination_class = SetPagination
-    filter_backends = [SearchFilter, OrderingFilter]
+    filter_backends = [OrderingFilter]
+
 
 class GameCreateAPIView(generics.CreateAPIView):
     """
