@@ -2,15 +2,24 @@ from rest_framework import generics, status
 from .models import Game
 from .serializers import GameSerializer
 from rest_framework.response import Response
+from .utils import SetPagination
+from rest_framework.filters import SearchFilter, OrderingFilter
 
-
-class GameListCreateAPIView(generics.ListCreateAPIView):
+class GameListAPIView(generics.ListAPIView):
     """
     API endpoint to list and create games.
     """
     queryset  = Game.objects.all()
     serializer_class = GameSerializer
+    pagination_class = SetPagination
+    filter_backends = [SearchFilter, OrderingFilter]
 
+class GameCreateAPIView(generics.CreateAPIView):
+    """
+    API endpoint to list and create games.
+    """
+    queryset  = Game.objects.all()
+    serializer_class = GameSerializer
 
 class GameRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
     """

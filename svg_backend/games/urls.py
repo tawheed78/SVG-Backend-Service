@@ -2,13 +2,15 @@ from django.urls import path
 from .views import (
     GameRetrieveUpdateAPIView,
     GameDestroyAPIView,
-    GameListCreateAPIView
+    GameListAPIView,
+    GameCreateAPIView
 )
+
 
 urlpatterns = [
     #Endpoint to list all the games and create new game
-    path('', GameListCreateAPIView.as_view()),
-    path('create-game/', GameListCreateAPIView.as_view()),
+    path('', GameListAPIView.as_view()),
+    path('create-game/', GameCreateAPIView.as_view()),
 
     #Endpoints to retrieve, update and delete a game
     path('<int:pk>/game/', GameRetrieveUpdateAPIView.as_view()),
