@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Game
-from rest_framework.response import Response
 
 
 class GameSerializer(serializers.ModelSerializer):

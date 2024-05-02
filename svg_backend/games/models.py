@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Game(models.Model):
     """A model to represent a game."""
     name = models.CharField(max_length=50)
