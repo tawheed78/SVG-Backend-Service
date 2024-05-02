@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'games',
-    'django_filters', 
+    'django_filters',
+    'drf_yasg', 
 ]
 
 MIDDLEWARE = [
